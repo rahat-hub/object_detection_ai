@@ -109,37 +109,63 @@ class ObjDetectionLogic extends GetxController {
 
     print(detector);
 
-    if(detector != null) {
-
-      try{
-        var ourDetectedObject = detector.first;
-        print(detector.first);
-
-
-        print("@**********************");
-
-        print(ourDetectedObject['confidenceInClass']);
-
-        if(ourDetectedObject['confidenceInClass'] * 100 > 45) {
-          label = detector.first[' '].toString();
-          print("wwwwwwwwwwwwwwww $label");
-          h = ourDetectedObject['rect']['h'];
-          w = ourDetectedObject['rect']['w'];
-          x = ourDetectedObject['rect']['x'];
-          y = ourDetectedObject['rect']['y'];
-
-          print("X : $x");
-          print("y : $y");
-          print("w : $w");
-          print("h : $h");
-        }
-        update();
-      } on PlatformException catch (e) {
-        label = "note Found in tfLite model";
-        print(e);
-      }
-
+    if (detector == null) {
+      return [];
     }
+    else {
+      detector.map((result) {
+        print("*************************");
+        print(result);
+        print("*************************");
+
+        h = result["rect"]["h"];
+        w = result["rect"]["w"];
+        x = result["rect"]["x"];
+        y = result["rect"]["y"];
+        label = result["detectedClass"];
+      }).toList();
+    }
+
+    // return detector.map((result){
+    //   return Positioned(
+    //
+    //   );
+    // }
+    // }).toList();
+
+
+    //if(detector != null) {
+
+      // try{
+      //   var ourDetectedObject = detector.first;
+      //   print(detector.first);
+      //
+      //
+      //   print("@**********************");
+      //
+      //   print(ourDetectedObject['confidenceInClass']);
+      //
+      //   if(ourDetectedObject['confidenceInClass'] * 100 > 45) {
+      //     label = detector.first[' '].toString();
+      //     print("wwwwwwwwwwwwwwww $label");
+      //     h = ourDetectedObject['rect']['h'];
+      //     w = ourDetectedObject['rect']['w'];
+      //     x = ourDetectedObject['rect']['x'];
+      //     y = ourDetectedObject['rect']['y'];
+      //
+      //     print("X : $x");
+      //     print("y : $y");
+      //     print("w : $w");
+      //     print("h : $h");
+      //   }
+      //   update();
+      // } on PlatformException catch (e) {
+      //   label = "note Found in tfLite model";
+      //   print(e);
+      // }
+    //
+    // }
+
   }
 
 }
