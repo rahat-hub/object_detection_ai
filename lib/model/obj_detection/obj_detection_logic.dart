@@ -8,9 +8,11 @@ import 'package:object_detection_ai/constant_data/constant_assets.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ObjDetectionLogic extends GetxController {
+
   var isLoading = false.obs;
 
   late CameraController cameraController;
+
   late List<CameraDescription> cameras;
 
   late CameraImage cameraImage;
@@ -20,6 +22,7 @@ class ObjDetectionLogic extends GetxController {
   var cameraCount = 0;
 
   var x = 0.0, y = 0.0, w = 0.0, h = 0.0;
+
   var label = "";
 
   var result = "";
@@ -29,11 +32,8 @@ class ObjDetectionLogic extends GetxController {
     // TODO: implement onInit
     super.onInit();
     isLoading.value = true;
-
     initTFLite();
-
     initCamera();
-
     isLoading.value = false;
   }
 

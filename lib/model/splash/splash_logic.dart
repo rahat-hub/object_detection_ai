@@ -22,6 +22,6 @@ class SplashLogic extends GetxController {
 
 
   newPageLoad() {
-    Get.offNamed(Routes.objectDetection);
+    Get.offNamed(Routes.dashboard);
   }
 }
